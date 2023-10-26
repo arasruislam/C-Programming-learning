@@ -1,0 +1,129 @@
+% x - ? ! ~ !! # (symble of writting note beautiful)
+
+
+~ function return type.
+-> return + parameter
+-> return + no parameter
+-> no return + parameter
+-> no return + no parameter
+
+/*
+- function syntax:
+
+return-type function_name(parameter){
+
+    // code
+    return statement;
+
+}
+*/
+
+
+% 1. return + parameter
+
+#include <stdio.h>
+
+int sum(int a, int b){
+    int sum = a + b;
+    return sum;
+}
+
+int main()
+{
+    int value = sum(10, 20);
+    printf("%d", value);
+    return 0;
+}
+
+
+% 2. return + no parameter
+
+#include <stdio.h>
+
+int sum () {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    int s = a + b;
+    return s;
+}
+
+int main()
+{
+    int s = sum();
+    printf("%d", s);
+    return 0;
+}
+
+- 2. return + no parameter(using void) 
+
+#include <stdio.h>
+
+int sum (void) {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    int s = a + b;
+    return s;
+}
+
+int main()
+{
+    int s = sum(100); // error
+    printf("%d", s);
+    return 0;
+}
+
+- 2. return + no parameter(sent value but not receive) 
+
+#include <stdio.h>
+
+int sum () {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    int s = a + b;
+    return s;
+}
+
+int main()
+{
+    int s = sum(100); // ignore the value
+    printf("%d", s);
+    return 0;
+}
+
+
+% 3. no return + parameter
+
+#include <stdio.h>
+
+void sum(int a, int b){
+    int s = a + b;
+    printf("%d", s);
+    return; 
+    // not compolsariy to write return. but never return value. because it's not return anything.
+}
+
+int main()
+{
+    int a, b;
+    scanf("%d %d", &a, &b);
+    sum(a, b);
+    return 0;
+}
+
+
+% 4. no return + no parameter
+
+#include <stdio.h>
+
+void sum(){
+    int a, b;
+    scanf("%d %d", &a, &b);
+    int s = a + b;
+    printf("%d", s);
+}
+
+int main()
+{
+    sum();
+    return 0;
+}
