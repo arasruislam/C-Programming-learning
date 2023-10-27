@@ -6,7 +6,7 @@ int main()
     scanf("%d", &n);
     int m = n - 1, k = 1;
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= 2*n; i++)
     {
         for (int j = 1; j <= m; j++)
         {
@@ -16,11 +16,20 @@ int main()
         {
             printf("*");
         }
-        k += 2;
-        m--;
+
+        if (i <= n)
+        {
+            m--;
+            k += 2;
+        }
+        else
+        {
+            m++;
+            k -= 2;
+        }
+
         printf("\n");
     }
-    for (int i = 1; i <= n; i++)
 
-        return 0;
+    return 0;
 }
