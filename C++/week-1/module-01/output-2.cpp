@@ -1,6 +1,6 @@
 #include <iostream>
 
-int main()
+int main() 
 {
     int a = 10;
     long long int b = 1000000000000;
