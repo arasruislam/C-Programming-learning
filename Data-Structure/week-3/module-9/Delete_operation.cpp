@@ -42,25 +42,6 @@ void print_reverse(Node *tail)
     }
     cout << endl;
 }
-
-// inset at any position
-void insert_at_any_position(Node *head, int position, int value)
-{
-    Node *newNode = new Node(value);
-    Node *temp = head;
-
-    for (int i = 1; i <= position - 1; i++)
-    {
-        temp = temp->next;
-    }
-    // 1st step
-    newNode->next = temp->next;
-    temp->next = newNode;
-    // 2nd step
-    newNode->next->previous = newNode;
-    newNode->previous = temp;
-}
-
 // print size
 int size(Node *head)
 {
@@ -74,39 +55,40 @@ int size(Node *head)
     return count;
 }
 
-// insert at head;
-void insert_at_head(Node *&head, Node *&tail, int value)
+// delete node at any position
+void delete_at_any_position(Node *head, int position)
 {
-    Node *newNode = new Node(value);
-    if (head == NULL)
+    Node *temp = head;
+
+    for (int i = 1; i <= position - 1; i++)
     {
-        head = newNode;
-        tail = newNode;
-        return;
+        temp = temp->next;
     }
 
-    newNode->next = head;
-    head->previous = newNode;
+    Node *delNode = temp->next;
+    temp->next = temp->next->next;
+    temp->next->previous = temp;
 
-    head = newNode;
+    delete delNode;
 }
-
-// insert at tail
-void insert_at_tail(Node *&head, Node *&tail, int value)
+// delete tail
+void delete_tail(Node *&tail)
 {
-    Node *newNode = new Node(value);
-    if (tail == NULL)
-    {
-        head = newNode;
-        tail = newNode;
-        return;
-    }
-    tail->next = newNode;
-    newNode->previous = tail;
-
-    tail = newNode;
+    Node *delNode = tail;
+    tail = tail->previous;
+    delete delNode;
+    tail->next = NULL;
 }
 
+// delete head
+void delete_head(Node *&head)
+{
+    Node *delHead = head;
+    head = head->next;
+    delete delHead;
+
+    head->previous = NULL;
+}
 int main()
 {
     // Node *head = NULL;
@@ -127,25 +109,30 @@ int main()
 
     // takes input
     int position, value;
-    cin >> position >> value;
+    cin >> position;
 
-    // apply condition for insert value at any position
-    if (position == 0)
-    {
-        insert_at_head(head, tail, value);
-    }
-    else if (position == size(head))
-    {
-        insert_at_tail(head, tail, value);
-    }
-    else if (position >= size(head))
+    // delete node at any position
+    // delete_at_any_position(head, position);
+    // delete tail
+    // delete_tail(tail);
+    // delete head
+    // delete_head(head);
+
+    if (position >= size(head))
     {
         cout << "Invalid" << endl;
     }
+    else if (position == 0)
+    {
+        delete_head(head);
+    }
+    else if (position == size(head) - 1)
+    {
+        delete_tail(tail);
+    }
     else
     {
-        // print insert item at any position.
-        insert_at_any_position(head, position, value);
+        delete_at_any_position(head, position);
     }
 
     // print left to right
