@@ -1,0 +1,1 @@
+// all code solve in leedcode and codingninja
