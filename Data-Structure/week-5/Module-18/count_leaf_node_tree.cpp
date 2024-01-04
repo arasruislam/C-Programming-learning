@@ -76,6 +76,5 @@ int count(Node *root)
 int main()
 {
     Node *root = take_input();
-    cout << count(root);
     return 0;
 }
