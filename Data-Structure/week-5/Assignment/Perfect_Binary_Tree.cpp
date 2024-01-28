@@ -1,5 +1,8 @@
 #include <iostream>
 #include <queue>
+#include <vector>
+#include <algorithm>
+#include <math.h>
 
 using namespace std;
 
@@ -18,7 +21,7 @@ public:
     }
 };
 
-// takes input
+// Takes Input using Level Order
 Node *take_input()
 {
     int value;
@@ -64,27 +67,39 @@ Node *take_input()
     return root;
 }
 
-int sumNode(Node *root)
+int count_node(Node *root)
 {
-    // base case
     if (root == NULL)
-    {
         return 0;
-    }
-    if (!root->left && !root->right)
-    {
+    int l = count_node(root->left);
+    int r = count_node(root->right);
+    return l + r + 1;
+}
+int maxHeight(Node *root)
+{
+    if (root == NULL)
         return 0;
-    }
-    int l = sumNode(root->left);
-    int r = sumNode(root->right);
 
-    return l + r + root->value;
+    int l = maxHeight(root->left);
+    int r = maxHeight(root->right);
+    return max(l, r) + 1;
 }
 
 int main()
 {
     Node *root = take_input();
-    cout << sumNode(root) << endl;
+    int totalNode = count_node(root);
+    int totalHeight = maxHeight(root);
+    int checkNode = pow(2, totalHeight) - 1;
+
+    if (checkNode == totalNode)
+    {
+        cout << "YES" << endl;
+    }
+    else
+    {
+        cout << "NO" << endl;
+    }
 
     return 0;
 }

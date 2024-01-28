@@ -18,8 +18,7 @@ public:
     }
 };
 
-// takes input
-Node *take_input()
+Node* take_input()
 {
     int value;
     cin >> value;
@@ -34,11 +33,9 @@ Node *take_input()
 
     while (!q.empty())
     {
-        // First Step
-        Node *pt = q.front();
+        Node *parent = q.front();
         q.pop();
 
-        // Second Step
         int l, r;
         cin >> l >> r;
         Node *newLeft;
@@ -52,39 +49,37 @@ Node *take_input()
         else
             newRight = new Node(r);
 
-        pt->left = newLeft;
-        pt->right = newRight;
+        parent->left = newLeft;
+        parent->right = newRight;
 
-        // Final Step
-        if (pt->left)
-            q.push(pt->left);
-        if (pt->right)
-            q.push(pt->right);
+        // last part
+        if(parent->left) q.push(parent->left);
+        if(parent->right) q.push(parent->right);
     }
     return root;
 }
-
-int sumNode(Node *root)
+void levelOrder(Node *root)
 {
-    // base case
-    if (root == NULL)
+    queue<Node *> q;
+    q.push(root);
+    while (!q.empty())
     {
-        return 0;
-    }
-    if (!root->left && !root->right)
-    {
-        return 0;
-    }
-    int l = sumNode(root->left);
-    int r = sumNode(root->right);
+        Node *front = q.front();
+        q.pop();
 
-    return l + r + root->value;
+        cout << front->value << " ";
+
+        if (front->left)
+            q.push(front->left);
+        if (front->right)
+            q.push(front->right);
+    }
 }
 
 int main()
 {
-    Node *root = take_input();
-    cout << sumNode(root) << endl;
+    Node* root = take_input();
+    levelOrder(root);
 
     return 0;
 }

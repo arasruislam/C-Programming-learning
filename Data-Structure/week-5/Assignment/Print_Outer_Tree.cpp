@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <vector>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ public:
     }
 };
 
-// takes input
+// Takes Input using Level Order
 Node *take_input()
 {
     int value;
@@ -64,27 +65,51 @@ Node *take_input()
     return root;
 }
 
-int sumNode(Node *root)
+void printLeft(Node *root)
 {
-    // base case
-    if (root == NULL)
-    {
-        return 0;
-    }
-    if (!root->left && !root->right)
-    {
-        return 0;
-    }
-    int l = sumNode(root->left);
-    int r = sumNode(root->right);
 
-    return l + r + root->value;
+    if (root->left)
+    {
+        printLeft(root->left);
+        cout << root->left->value << " ";
+    }
+    else if (root->right)
+    {
+        printLeft(root->right);
+        cout << root->right->value << " ";
+    }
+}
+
+void printRight(Node *root)
+{
+    if (root->right)
+    {
+        cout << root->right->value << " ";
+        printRight(root->right);
+    }
+    else if (root->left)
+    {
+        cout << root->left->value << " ";
+        printRight(root->left);
+    }
 }
 
 int main()
 {
     Node *root = take_input();
-    cout << sumNode(root) << endl;
+
+    if (root)
+    {
+        if (root->left)
+        {
+            printLeft(root);
+            cout << root->value << " ";
+        }
+        if (root->right)
+        {
+            printRight(root);
+        }
+    }
 
     return 0;
 }
