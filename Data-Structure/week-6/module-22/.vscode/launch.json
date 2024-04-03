@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/mac/Documents/Asru Islam/Fundamental-Programming/Data-Structure/week-6/module-22",
+      "program": "/Users/mac/Documents/Asru Islam/Fundamental-Programming/Data-Structure/week-6/module-22/build/Debug/outDebug"
+    }
+  ]
+}
