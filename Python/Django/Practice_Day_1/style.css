@@ -1,0 +1,360 @@
+/* Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+#header {
+  background-image: url(./images/banner.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* Header */
+#nav {
+  display: flex;
+  width: 90vw;
+  height: 80px;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+.nav-item > ul {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.nav-item > ul > li {
+  list-style: none;
+  color: #fb9d5c;
+  transition: font-weight ease-in 0.3s;
+}
+.nav-item > ul > li:hover {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Banner */
+#banner {
+  margin-top: 20px;
+  width: 70vw;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.banner-left > p {
+  color: #fb9d5c;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 26px;
+}
+.banner-left > h1 {
+  color: #fff;
+  font-size: 44px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 54px;
+}
+.btn {
+  /* display: flex;
+  height: 38px; */
+  padding: 7px 14px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: none;
+  background: #fb9d5c;
+  cursor: pointer;
+}
+.banner-right > img {
+  width: 435px;
+  height: 580px;
+}
+
+/* Main */
+/* Logo */
+.logo-container {
+  width: 90vw;
+  height: 100%;
+  padding: 30px 60px;
+  margin: auto;
+  background-color: #f5f5f5;
+}
+.all-logos {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  gap: 40px;
+}
+
+
+/* services */
+#services {
+  width: 90vw;
+  margin: 50px auto;
+  flex-shrink: 0;
+}
+.service-info {
+  text-align: center;
+}
+.service-info > h1 {
+  font-weight: 500;
+}
+.service-info > img {
+  margin: 5px 0px;
+}
+.services {
+  margin-top: 20px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+.service-item {
+  width: 356px;
+  border: 1px solid #e3e3e3;
+  padding: 10px;
+  text-align: center;
+}
+.service-item > h3 {
+  font-weight: 400;
+  margin: 5px 0px;
+}
+.service-item > p {
+  margin-top: 5px;
+}
+
+/* hire */
+#hire {
+  width: 90vw;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 3rem;
+  flex-shrink: 0;
+}
+.hire-right {
+  padding: 10px;
+}
+.hire-right .btn {
+  background-color: #0dcaf0;
+}
+.hire-right > h1 {
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+.hire-right > p {
+  text-align: justify;
+  margin-bottom: 10px;
+}
+.contact {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+.contact > img {
+  width: 80px;
+  height: 80px;
+}
+.contact > h2 {
+  font-weight: 400;
+}
+span {
+  color: #fb9d5c;
+}
+.hire-right > h2 {
+  font-weight: 400;
+  margin-top: 10px;
+}
+/* Footer */
+#footer {
+  background: #151515;
+  color: rgb(164, 164, 164);
+  padding: 30px 0px;
+}
+.footer {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 5px;
+}
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.footer-logo > h6 {
+  color: #fb9d5c;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.footer-logo > img {
+  width: 50px;
+  height: 50px;
+}
+.footer-info {
+  text-align: center;
+  width: 320px;
+}
+.footer-info > p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.get-notification > input {
+  height: 40px;
+  padding: 6px 20px;
+  flex-shrink: 0;
+  background: #bcbcbc;
+  border: none;
+  color: white;
+}
+.footer-navbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+}
+.footer-item {
+  width: 220px;
+  text-align: center;
+}
+.footer-item > h4 {
+  font-weight: 400;
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+.footer-item > ul > li {
+  list-style: none;
+}
+.address {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+}
+.address > h6 {
+  font-weight: 400;
+  color: #fb9d5c;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  #nav {
+    width: 100vw;
+    flex-direction: column;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .logo {
+    width: 60px;
+    height: 60px;
+    margin-top: 5px;
+  }
+  .nav-item > ul {
+    gap: 1rem;
+  }
+  #banner {
+    width: 100vw;
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .btn {
+    margin-bottom: 10px;
+  }
+  .banner-left > p {
+    font-size: 16px;
+  }
+  .banner-left > h1 {
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 5px;
+  }
+  .banner-right > img {
+    width: 235px;
+    height: 380px;
+  }
+  .logo-container {
+    width: 100vw;
+    height: 100%;
+    padding: 20px 0;
+  }
+  .all-logos {
+    flex-direction: column;
+  }
+  #services {
+    width: 100vw;
+  }
+  .service-item {
+    width: 280px;
+  }
+  #hire {
+    width: 100vw;
+    flex-direction: column;
+  }
+  .hire-left > img {
+    width: 100%;
+  }
+  .footer {
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .footer-navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+/* Laptop */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .all-logos {
+    flex-wrap: wrap;
+  }
+  .logo-container {
+    height: 100%;
+  }
+  #hire {
+    flex-direction: column-reverse;
+  }
+  .footer {
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .footer-navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  #banner {
+  width: 90vw;
+}
+.banner-right > img {
+  width: 400px;
+  height: 580px;
+}
+.banner-left > h1 {
+  font-size: 36px;
+  line-height: 44px;
+}
+.banner-left > p {
+  font-size: 18px;
+}
+}

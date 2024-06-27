@@ -6,12 +6,17 @@
 # print("total", total)
 
 # Args
-def all_sum(*numbers):
-    print(numbers)
-    sum =0
-    for num in numbers:
-        sum += num
-    return sum
+# def all_sum(*numbers):
+    # print(numbers)
+    # sum = 0
+    # for num in numbers:
+    #     sum += num
+    # return sum
     
-total = all_sum(45, 4 ,23, 5)
-print("All sum", total)
+# total = all_sum(45, 4 ,23, 5)
+# print("All sum", total)
+
+def all_info(**information):
+    print(information)
+
+all_info(name='Asru Islam', study='CU', age=22)

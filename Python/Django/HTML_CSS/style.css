@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(233, 233, 233);
+  padding: 10px;
+}
+.logo {
+  width: 100px;
+}
+.menu-container {
+  display: flex;
+  gap: 15px;
+}
+li {
+  list-style: none;
+  font-size: 20px;
+}
+li:hover {
+  color: blue;
+  cursor: pointer;
+}
+/* end header style */
+.banner-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+}
+.banner-left {
+  width: 400px;
+  line-height: 24px;
+}
+.banner-img {
+  width: 350px;
+}
+.btn{
+    padding: 15px 30px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.hire-btn{
+    background-color: rgb(47, 30, 64);
+}
+.project-btn{
+    background-color: rgb(19, 104, 201);
+}
+.title{
+    font-size: 45px;
+}
+
+/* Services */
+.service-container{
+    margin-top: 30px;
+    text-align: center;
+}
+.service-title{
+    font-size: 50px;
+    text-align: center;
+}
+.services{
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.service-card{
+    width: 300px;
+    height: 450px;
+    /* border: 1px solid gray; */
+    box-shadow: 4px 4px 8px gray;
+    border-radius: 10px;
+}
+.service-img{
+    width: 250px;
+}
+
+.service-card-btn{
+padding: 15px 25px;
+background-color: aqua;
+border: none;
+font-size: 20px;
+border-radius: 10px;
+cursor: pointer;
+}
+.service-description{
+    margin: 10px;
+}
+
+
+/* Contact Us */
+.contact-us{
+    padding: 50px;
+    /* width: 100%;
+    margin: auto; */
+}
+
