@@ -5,7 +5,7 @@ from author.models import Author
 
 # Create your models here.
 class Post(models.Model):
-    name = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
     content = models.TextField()
 
     # relation with category => many to many relation
@@ -13,3 +13,7 @@ class Post(models.Model):
 
     # relation with author => one to many | many to one
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
+
+
+    def __str__(self) -> str:
+        return self.title
