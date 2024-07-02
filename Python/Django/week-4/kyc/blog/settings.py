@@ -42,7 +42,16 @@ INSTALLED_APPS = [
     "posts",
     "categories",
     "profiles",
+    # Tailwind
+    "tailwind",
+    "theme",
 ]
+# tailwind
+TAILWIND_APP_NAME = "theme"
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
