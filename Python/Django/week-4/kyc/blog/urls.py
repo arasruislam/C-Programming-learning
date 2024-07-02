@@ -9,4 +9,5 @@ urlpatterns = [
     # path("profile/", include("profiles.urls")),
     # path("post/", include("posts.urls")),
     # path("category/", include("categories.urls")),
+    path("__reload__/", include("django_browser_reload.urls")),
 ]
