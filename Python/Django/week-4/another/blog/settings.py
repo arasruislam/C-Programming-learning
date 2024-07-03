@@ -37,6 +37,8 @@ TAILWIND_APP_NAME = "theme"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+NPM_BIN_PATH = "/usr/local/bin/npm"
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
