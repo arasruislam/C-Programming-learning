@@ -57,7 +57,7 @@ def profile(request):
                 messages.success(request, "User Data updated successfully")
                 form.save()
         else:
-            form = ChangeUserData()
+            form = ChangeUserData(instance=request.user)
         return render(request, "profile.html", {"form": form})
     else:
         return redirect("signup")
@@ -100,7 +100,7 @@ def change_user_data(request):
             messages.success(request, "User Data updated successfully")
             return redirect("profile")
         else:
-            form = ChangeUserData()
+            form = ChangeUserData(instance=request.user)
         return render(request, "profile.html", {"form": form})
     else:
         return redirect("signup")
