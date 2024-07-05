@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load static tailwind_tags %}
 
 
 {% block content %}
-<h1>Author page</h1>
+<h1 class="text-fuchsia-500 text-5xl">Author page</h1>
 <form action="" method="POST">
     {% csrf_token %}
     {{form}}
