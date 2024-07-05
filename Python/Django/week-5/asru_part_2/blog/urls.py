@@ -9,4 +9,3 @@ urlpatterns = [
     path("post/", include("posts.urls")),
     path("category/", include("categories.urls")),
 ]
-k
