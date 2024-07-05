@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # apps
     "author",
-    "profiles",
     "categories",
     "posts",
     # crispy
