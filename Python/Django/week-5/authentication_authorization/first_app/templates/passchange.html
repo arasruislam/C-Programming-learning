@@ -4,7 +4,7 @@
 
 {% block body %}
 <form method="post" style="width: 50%; margin: auto" novalidate>
-    <h1 class="text-center my-3">Login Page</h1>
+    <h1 class="text-center my-3">Password Change Page</h1>
     {% csrf_token %}
     {% if form.non_field_errors %}
     {% for er in form.non_field_errors %}
@@ -12,10 +12,11 @@
     {% endfor %}
     {% endif %}
     <!-- {{form | crispy }} -->
-    {% for fm in form%} {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}
+    {% for fm in form%} {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}} </small>
     {% endfor %}
     <br />
-    <button class="btn btn-warning" type="submit">Login</button>
+    <button class="btn btn-warning" type="submit">Change Password</button>
+    
     <br />
 </form>
 {% endblock body %}
