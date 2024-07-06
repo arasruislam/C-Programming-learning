@@ -6,8 +6,8 @@
 
 <form action="" method="POST">
     {% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
     {{form|crispy}}
-    
-    <button class="btn btn-warning" type="submit">Submit</button>
+    <button class="btn btn-warning" type="submit">Delete</button>
 </form>
 {% endblock content %}
