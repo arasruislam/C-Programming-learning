@@ -1,5 +1,6 @@
 from django.db import models
 from categories.models import Category
+
 # from author.models import Author
 from django.contrib.auth.models import User
 
@@ -8,6 +9,7 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
+    image = models.ImageField(upload_to="posts/media/uploads/", blank=True, null= True)
 
     # relation with category => many to many relation
     category = models.ManyToManyField(Category)
