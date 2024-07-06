@@ -6,6 +6,10 @@ from django.contrib import messages
 from . import forms
 from posts.models import Post
 
+# using class based view
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse_lazy
+
 
 # Create your views here.
 def register(request):
@@ -43,9 +47,30 @@ def user_login(request):
     return render(request, "register.html", {"form": form, "type": "Login"})
 
 
+# login function convert to class based view
+class userLoginView(LoginView):
+    template_name = "register.html"
+
+    def get_success_url(self) -> str:
+        return reverse_lazy("profile")
+
+    def form_valid(self, form):
+        messages.success(self.request, "logged in successful")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.success(self.request, "logged in information incorrect")
+        return super().form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["type"] = "Login"
+        return context
+
+
 @login_required
 def profile(request):
-    data = Post.objects.filter(author = request.user)
+    data = Post.objects.filter(author=request.user)
     return render(request, "profile.html", {"data": data})
 
 
@@ -78,3 +103,4 @@ def pass_change(request):
 def user_logout(request):
     logout(request)
     return redirect("user_login")
+
