@@ -1,16 +1,17 @@
 from django.shortcuts import render, redirect
-from . import forms
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import messages
+from . import forms
+
 
 # Create your views here.
-
-
 def register(request):
     if request.method == "POST":
         register_form = forms.RegistrationForm(request.POST)
         if register_form.is_valid():
             register_form.save()
+            messages.success(request, "Account Created Successfully")
             return redirect("register")
     else:
         register_form = forms.RegistrationForm()
@@ -30,9 +31,16 @@ def user_login(request):
 
             if user is not None:
                 login(request, user)
-                return redirect("profile")
+                messages.success(request, "Logged in Successfully")
+                return redirect("home")
             else:
+                messages.warning(request, "Login informtion incorrect")
                 return redirect("register")
     else:
         form = AuthenticationForm()
     return render(request, "register.html", {"form": form, "type": "Login"})
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('user_login')
