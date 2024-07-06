@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from . import forms
 
@@ -41,6 +42,32 @@ def user_login(request):
     return render(request, "register.html", {"form": form, "type": "Login"})
 
 
+@login_required
+def profile(request):
+    if request.method == "POST":
+        profile_form = forms.ChangeUserData(request.POST, instance=request.user)
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, "update profile Successfully")
+            return redirect("profile")
+    else:
+        profile_form = forms.ChangeUserData(instance=request.user)
+    return render(request, "profile.html", {"form": profile_form})
+
+
+def pass_change(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "update profile Successfully")
+            update_session_auth_hash(request, form.user)
+            return redirect("profile")
+    else:
+        form = PasswordChangeForm(user=request.user)
+    return render(request, "passchange.html", {"form": form})
+
+
 def user_logout(request):
     logout(request)
-    return redirect('user_login')
+    return redirect("user_login")
