@@ -1,0 +1,61 @@
+from django.contrib.auth.forms import UserCreationForm
+from .models import UserBankAccount, UserAddress
+from .constants import ACCOUNT_TYPE, GENDER_TYPE
+from django.contrib.auth.models import User
+from django import forms
+
+
+class UserRegistrationForm(UserCreationForm):
+    account_type = forms.CharField(max_length=10, choices=ACCOUNT_TYPE)
+    birth_date = forms.DateField(null=True, blank=True)
+    gender = forms.CharField(max_length=10, choices=GENDER_TYPE)
+    street_address = forms.CharField(max_length=100)
+    city = forms.CharField(max_length=100)
+    postal_code = forms.IntegerField()
+    country = forms.CharField(max_length=100)
+
+    class Meta:
+        model = User
+        fields = [
+            "username",
+            "password1",
+            "password2",
+            "first_name",
+            "last_name",
+            "account_type",
+            "birth_date",
+            "gender",
+            "street_address",
+            "city",
+            "postal_code",
+            "country",
+        ]
+
+    def save(self, commit=True):
+        our_user = super().save(commit=False)
+
+        if commit == True:
+            our_user.save()
+            account_type = self.cleaned_data.get("account_type")
+            birth_date = self.cleaned_data.get("birth_date")
+            gender = self.cleaned_data.get("gender")
+            street_address = self.cleaned_data.get("street_address")
+            city = self.cleaned_data.get("city")
+            postal_code = self.cleaned_data.get("postal_code")
+            country = self.cleaned_data.get("country")
+
+            UserBankAccount.objects.create(
+                user=our_user,
+                account_type=account_type,
+                gender=gender,
+                birth_date=birth_date,
+                account_no=1000 + our_user.id,
+            )
+            UserAddress.objects.create(
+                user=our_user,
+                street_address=street_address,
+                city=city,
+                postal_code=postal_code,
+                country=country,
+            )
+        return our_user
