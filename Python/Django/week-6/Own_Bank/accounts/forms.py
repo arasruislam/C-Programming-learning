@@ -6,9 +6,9 @@ from django import forms
 
 
 class UserRegistrationForm(UserCreationForm):
-    account_type = forms.CharField(max_length=10, choices=ACCOUNT_TYPE)
-    birth_date = forms.DateField(null=True, blank=True)
-    gender = forms.CharField(max_length=10, choices=GENDER_TYPE)
+    account_type = forms.ChoiceField(choices=ACCOUNT_TYPE)
+    birth_date = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
+    gender = forms.ChoiceField(choices=GENDER_TYPE)
     street_address = forms.CharField(max_length=100)
     city = forms.CharField(max_length=100)
     postal_code = forms.IntegerField()
