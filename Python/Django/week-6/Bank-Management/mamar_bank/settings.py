@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     # App
     "accounts",
     "core",
+    "transactions",
 ]
 
 MIDDLEWARE = [
