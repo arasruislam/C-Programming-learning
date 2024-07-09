@@ -4,18 +4,19 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import CreateView, ListView
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 from django.contrib import messages
+from django.db.models import Sum
 from .models import Transaction
 from django.views import View
 from datetime import datetime
-from django.db import Sum
 
 
 class TransactionCreateMixin(LoginRequiredMixin, CreateView):
-    template_name = ""
+    template_name = "transactions/transaction_form.html"
     model = Transaction
     title = ""
-    success_url = ""
+    success_url = reverse_lazy("transaction_report")
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -25,7 +26,7 @@ class TransactionCreateMixin(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({"title": self.title})
-        return super().get_context_data(**kwargs)
+        return context
 
 
 class DepositMoneyView(TransactionCreateMixin):
@@ -93,7 +94,7 @@ class LoanRequestView(TransactionCreateMixin):
         return super().form_valid(form)
 
 class TransactionReportView(LoginRequiredMixin, ListView):
-    template_name = ''
+    template_name = "transactions/transaction_report.html"
     model = Transaction
     balance = 0
 
@@ -140,18 +141,18 @@ class PayLoanView(LoginRequiredMixin, View):
                 loan.loan_approved = True
                 loan.transaction_type = LOAN_PAID
                 loan.save()
-                return redirect()
+                return redirect("transaction_report")
             else:
                 messages.error(
                     self.request, f"Loan amount is greater than available balance"
                 )
 
-        return redirect()
+        return redirect("transaction_report")
 
 
 class LoanListView(LoginRequiredMixin, ListView):
     model = Transaction
-    template_name = ""
+    template_name = "transactions/loan_request.html"
     context_object_name = "loans"  # loan list ta ei loans context er moddhe thakbe
 
     def get_queryset(self):
