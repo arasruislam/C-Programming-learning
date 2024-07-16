@@ -3,7 +3,7 @@ from django.urls import path, include
 from .views import ServiceViewSet
 
 router = DefaultRouter()
-router.register("service", ServiceViewSet)
+router.register("", ServiceViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
