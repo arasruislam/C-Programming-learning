@@ -19,19 +19,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    # rest framework
+    "rest_framework",
     # app
-    'appointment',
-    'doctor',
-    'patient',
-    'service',
-    'contact_us',
+    "appointment",
+    "doctor",
+    "patient",
+    "service",
+    "contact_us",
 ]
 
 MIDDLEWARE = [
