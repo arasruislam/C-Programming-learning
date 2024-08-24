@@ -1,16 +1,18 @@
+from .serializers import PatientSerializer, RegistrationSerializer, UserLoginSerializer
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from .serializers import PatientSerializer, RegistrationSerializer
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import viewsets
+from rest_framework.authtoken.models import Token
 from .models import Patient
 
 # for email sending
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 from django.shortcuts import redirect
 
 
@@ -58,3 +60,22 @@ def Activate(request, uid64, token):
         return redirect("register")
     else:
         return redirect("register")
+
+
+class UserLoginApiView(APIView):
+    def post(self):
+        serializer = serializer.UserLoginSerializer(data=self.request.data)
+
+        if serializer.is_valid():
+            username = serializer.validated_data["username"]
+            password = serializer.validated_data["password"]
+
+            user = authenticate(username=username, password=password)
+
+            if user:
+                token = Token.objects.get_or_create(user=user)
+                return Response({"token": token, "user_id": user.id})
+            else:
+                return Response({"error": "Invalid Credential"})
+
+        return Response({"error": serializer.errors})
